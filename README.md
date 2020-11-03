@@ -12,7 +12,7 @@ xxx.xxx.xxx.xxx 设置ElasticSearch服务器地址
 
 1、创建索引数据
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"index":"posts", "esType":"_doc", "docId":"1", "jsonString":"{\"user\":\"akuk\"}"}' http://127.0.0.1:8051/elasticSearch/posts
+curl -X POST -H "Content-Type: application/json" -d '{"index":"posts", "esType":"_doc", "docId":"1", "jsonString":"{\"user\":\"akuk\"}"}' http://127.0.0.1:8051/elasticSearch/regions
 ```
 
 2、获取索引数据
