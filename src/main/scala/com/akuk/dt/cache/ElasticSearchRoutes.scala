@@ -71,7 +71,7 @@ class ElasticSearchRoutes()(implicit system: ActorSystem[_]) {
                 }
               } catch {
                 case e: ParsingException =>
-                  complete(StatusCodes.BadRequest, "格式化 json 参数异常")
+                  complete(StatusCodes.BadRequest, "格式化 json 参数异常: ${_param}")
                 case e: Exception =>
                   complete(StatusCodes.BadRequest, e.getMessage)
               }
