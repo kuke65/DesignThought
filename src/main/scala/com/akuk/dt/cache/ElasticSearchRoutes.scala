@@ -56,11 +56,11 @@ class ElasticSearchRoutes()(implicit system: ActorSystem[_]) {
           get {
             parameters("_param") { _param => {
               try {
-                val jsonObject = JsonParser(ParserInput(_param))
-                val index = jsonObject.asJsObject.fields("index").toString(stringToSpecificType)
-                val esType = jsonObject.asJsObject.fields("esType").toString(stringToSpecificType)
-                val docId = jsonObject.asJsObject.fields("docId").toString(stringToSpecificType)
-                val jsonString = jsonObject.asJsObject.fields("jsonString").toString(stringToSpecificType)
+                val fields = JsonParser(ParserInput(_param)).asJsObject.fields
+                val index = fields("index").toString(stringToSpecificType)
+                val esType = fields("esType").toString(stringToSpecificType)
+                val docId = fields("docId").toString(stringToSpecificType)
+                val jsonString = fields("jsonString").toString(stringToSpecificType)
                 val elasticSearchCacheRef: ActorRef[ElasticSearchCache.Command] = ElasticSearchCache.regions.get(ElasticSearchCache.EntityKey)
                 val reply: Future[ElasticSearchCache.Confirmation] = elasticSearchCacheRef ? (reply => ElasticSearchCache.GetIndexData(index, esType, docId, jsonString, reply))
                 onSuccess(reply) {
