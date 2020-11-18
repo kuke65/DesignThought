@@ -25,8 +25,9 @@ curl -X POST -H "Content-Type: application/json" -d '{"id": "posts" ,"secret": "
 ```
 
 4、
+```
 浏览器访问 http://127.0.0.1:8051/redis/regions?_param={"clientId":"posts", "clientSecret":"dt_FAfQDrefwERw1d3f.2e2Os41fwAfe"}
 或者
 curl http://127.0.0.1:8051/redis/regions?_param=%7B%22clientId%22%3A%22posts%22%2C%20%22clientSecret%22%3A%22dt_FAfQDrefwERw1d3f.2e2Os41fwAfe%22%7D
-
+```
 
