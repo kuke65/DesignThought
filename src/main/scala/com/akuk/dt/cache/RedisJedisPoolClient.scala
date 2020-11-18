@@ -59,6 +59,7 @@ object RedisJedisPoolClient {
     credentials.put("details", "")
     val jedis = pool.getResource
     jedis.hmset(CRUD_PREFIX_NAME + clientCreds.id, credentials)
+    jedis.close()
     RESULT_OK
   }
 
@@ -82,6 +83,7 @@ object RedisJedisPoolClient {
     credentials.put("details", "")
     val jedis = pool.getResource
     jedis.hmset(CRUD_PREFIX_NAME + clientCreds.id, credentials)
+    jedis.close()
     RESULT_OK
   }
 
@@ -97,6 +99,7 @@ object RedisJedisPoolClient {
     val key = CRUD_PREFIX_NAME + clientId
     val secret = jedis.hget(key, "secret")
     val status = jedis.hget(key, "status")
+    jedis.close()
     log.info(s"RedisCache.validClient($clientId, $clientSecret) secret: $secret , status = $status ")
     if (clientSecret.equals(secret) && CLIENT_ACTIVE_STATUS.equals(status)) {
       RESULT_OK
@@ -113,6 +116,7 @@ object RedisJedisPoolClient {
   def removeClientId(clientId: String): String = {
     val jedis = pool.getResource
     jedis.expire(CRUD_PREFIX_NAME + clientId, 0)
+    jedis.close()
     RESULT_OK
   }
 

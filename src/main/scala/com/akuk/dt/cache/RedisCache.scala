@@ -4,7 +4,7 @@ package com.akuk.dt.cache
 import java.util.concurrent.ConcurrentHashMap
 
 import akka.actor.typed.scaladsl.Behaviors
-import akka.actor.typed.{ActorRef, ActorSystem, Behavior}
+import akka.actor.typed.{ActorRef, ActorSystem, Behavior, SupervisorStrategy}
 import com.akuk.dt.cache.RedisRoutes.ClientCredentials
 
 
@@ -43,26 +43,30 @@ object RedisCache {
   val regions: ConcurrentHashMap[String, ActorRef[Command]] = new ConcurrentHashMap
 
   def apply(): Behavior[Command] = {
+    Behaviors
+      .supervise[Command] {
+      Behaviors.setup { ctx =>
 
-    // 在用户读取数据需要对所有事件进行处理
-    Behaviors.receive { (ctx, command) =>
-      command match {
-        case PostRedisData(clientCredentials, replyTo) =>
-          try {
-            replyTo ! Accepted(RedisJedisPoolClient.storeClientCredentials(clientCredentials))
-          } catch {
-            case e: Exception => replyTo ! Rejected(s"Redis PostCacheData return exception ${e.getMessage}")
+        // 在用户读取数据需要对所有事件进行处理
+        Behaviors.receiveMessage[Command] { command =>
+          command match {
+            case PostRedisData(clientCredentials, replyTo) =>
+              try {
+                replyTo ! Accepted(RedisJedisPoolClient.storeClientCredentials(clientCredentials))
+              } catch {
+                case e: Exception => replyTo ! Rejected(s"Redis PostCacheData return exception ${e.getMessage}")
+              }
+            case GetRedisData(clientId, clientSecret, replyTo) =>
+              try {
+                replyTo ! Accepted(RedisJedisPoolClient.validClient(clientId, clientSecret))
+              } catch {
+                case e: Exception => replyTo ! Rejected(s"Redis GetCacheData return exception ${e.getMessage}")
+              }
           }
-        case GetRedisData(clientId, clientSecret, replyTo) =>
-          try {
-            replyTo ! Accepted(RedisJedisPoolClient.validClient(clientId, clientSecret))
-          } catch {
-            case e: Exception => replyTo ! Rejected(s"Redis GetCacheData return exception ${e.getMessage}")
-          }
-
+          Behaviors.same
+        }
       }
-      Behaviors.same
-    }
+    }.onFailure[Exception](SupervisorStrategy.restart)
   }
 
   def init(system: ActorSystem[_]) = {
