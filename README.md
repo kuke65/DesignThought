@@ -19,12 +19,12 @@ curl http://127.0.0.1:8051/elasticSearch/regions?_param=%7B%22index%22%3A%22post
 ```
 
 
-3、
+3、保存凭证信息到redis
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"id": "posts" ,"secret": "dt_FAfQDrefwERw1d3f.2e2Os41fwAfe" ,"scope": "scope" ,"name":"name"  ,"created": 1605738162  ,"uri": "ops","descr": "descr" ,"ctype": 1 ,"status": 1 , "detail":{"user":"akuk"} }' http://127.0.0.1:8051/redis/regions
 ```
 
-4、
+4、校验redis凭证信息
 ```
 浏览器访问 http://127.0.0.1:8051/redis/regions?_param={"clientId":"posts", "clientSecret":"dt_FAfQDrefwERw1d3f.2e2Os41fwAfe"}
 或者
