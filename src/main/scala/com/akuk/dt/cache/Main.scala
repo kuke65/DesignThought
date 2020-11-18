@@ -38,8 +38,14 @@ object Guardian {
 
       ZookeeperManager.init(system)
       ElasticSearchCache.init(system)
-      val routes = new ElasticSearchRoutes()(context.system)
-      new CacheServer(routes.cache, httpPort, context.system).start()
+      RedisCache.init(system)
+      val esRoute = new ElasticSearchRoutes()(context.system)
+      val redisRoute = new RedisRoutes()(context.system)
+
+      TopLevelRoute.routeMap.putIfAbsent("elasticSearch", esRoute.cache)
+      TopLevelRoute.routeMap.putIfAbsent("redis", redisRoute.cache)
+
+      new CacheServer(TopLevelRoute.topLevelRoute, httpPort, context.system).start()
       Behaviors.empty
 
     }

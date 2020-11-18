@@ -51,13 +51,13 @@ object ElasticSearchCache {
           try {
             replyTo ! Accepted(ElasticSearchLowLevelRestClient.indexDataPost(index, esType, docId, jsonString))
           } catch {
-            case e: Exception => replyTo ! Rejected(s"ES indexDataPost return exception ${e}")
+            case e: Exception => replyTo ! Rejected(s"ES indexDataPost return exception: ${e.getMessage}")
           }
         case GetIndexData(index, esType, docId, jsonString, replyTo) =>
           try {
             replyTo ! Accepted(ElasticSearchLowLevelRestClient.indexDataGet(index, esType, docId, jsonString))
           } catch {
-            case e: Exception => replyTo ! Rejected(s"ES indexDataGet return exception ${e}")
+            case e: Exception => replyTo ! Rejected(s"ES indexDataGet return exception: ${e.getMessage}")
           }
 
       }

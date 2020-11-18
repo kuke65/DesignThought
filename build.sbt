@@ -22,6 +22,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
   "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
   "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion,
+  "redis.clients" % "jedis" % "3.3.0",
   "org.apache.zookeeper" % "zookeeper" % "3.5.5"
     exclude("log4j", "log4j")
     exclude("org.slf4j", "slf4j-log4j12"),

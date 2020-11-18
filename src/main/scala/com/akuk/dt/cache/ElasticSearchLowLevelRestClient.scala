@@ -22,7 +22,7 @@ object ElasticSearchLowLevelRestClient {
   /**
    * rest客户端
    */
-  val restClient = RestClient.builder(
+  lazy val restClient = RestClient.builder(
     new HttpHost(Option.apply(System.getProperty("hostname")).getOrElse("127.0.0.1"), 9200, "http"),
     new HttpHost(Option.apply(System.getProperty("hostname")).getOrElse("127.0.0.1"), 9201, "http")).build()
 
