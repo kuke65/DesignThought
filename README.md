@@ -1,5 +1,5 @@
 ## 研究kafka中，不面试
-stream 和 algorithm暂停更新
+streams 和 algorithm暂停更新
 
 ## 使用方式
 
