@@ -33,9 +33,9 @@ object RedisJedisPoolClient {
   /**
     * 初始化redis连接池
     */
-  if (Option.apply(password).isEmpty || Option.apply(pool).isEmpty) {
+  if (Option.apply(password).isEmpty && Option.apply(pool).isEmpty) {
     pool = new JedisSentinelPool(master, sentinels)
-  } else {
+  } else if (Option.apply(pool).isEmpty) {
     pool = new JedisSentinelPool(master, sentinels, password)
   }
 
