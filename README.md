@@ -1,3 +1,6 @@
+## 研究kafka中，不面试
+stream 和 algorithm暂停更新
+
 ## 使用方式
 
 启动项目
