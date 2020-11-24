@@ -1,0 +1,34 @@
+@import "commonvars";
+
+@mixin status() {
+  .status-container {
+    overflow-y: auto;
+    height: calc(100% - #{$header-height});
+
+    padding: 45px 45px;
+
+    .runner-state,
+    .runner {
+      padding: 10px;
+    }
+
+    .ready {
+      background-color: green;
+      color: white;
+    }
+
+    .unknown,
+    .initializing,
+    .creating-config,
+    .connecting,
+    .indexing,
+    .needs-reload {
+      background-color: yellow; 
+    }
+
+
+    * {
+      margin: 20px;
+    }
+  }
+}

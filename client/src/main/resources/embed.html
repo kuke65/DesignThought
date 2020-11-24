@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<pre class="Scala-js">
+
+/*
+
+foo
+
+*/
+
+// fold
+import org.scalajs.dom.raw.HTMLImageElement
+import org.scalajs.dom
+// end-fold
+
+val img = dom.document.createElement("img").asInstanceOf[HTMLImageElement]
+img.alt = "such dog" 
+img.src = "http://static5.businessinsider.com/image/52b2df16eab8ea421ff15454-500-379/doge.jpg"
+img
+</pre>
+
+<pre class="Scala-jvm">
+List(1, 2, 3).reverse
+</pre>
+
+<script src="http://localhost:9000/embedded.js"></script>
+<script>
+window.onload = function() {
+  scastie.Embedded(
+    ".Scala-js",
+    {
+      targetType: "js",
+      serverUrl: "http://localhost:9000"
+    }
+  );
+
+  scastie.Embedded(
+    ".Scala-jvm",
+    {
+      serverUrl: "http://localhost:9000"
+    }
+  );
+}
+</script>
+
+</body>
+</html>

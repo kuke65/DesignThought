@@ -1,0 +1,144 @@
+@import "commonvars";
+
+@mixin topbar() {
+
+  .topbar {
+    flex-direction: row;
+    text-align: right;
+    width: 100%;
+    height: $header-height;
+    overflow: auto;
+    
+    .logo {
+      text-decoration: none;
+      display: block;
+      height: $header-height;
+      line-height: $header-height;
+      text-align: left;
+      width: $sidebar-width;
+      
+      img {
+        float: left;
+        margin: 21px 10px 21px 18px;
+        width: 24px;
+        height: 28px;
+        line-height: $header-height;
+      }
+      h1 {
+        display: inline-block;
+      }
+    }
+    ul.actions {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-block;
+      cursor: pointer;
+      padding: 0px 20px;
+
+      .avatar {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      li.dropdown {
+        display: inline-block;
+        height: $header-height;
+        position: relative;
+        cursor: pointer;
+        line-height: $header-height;
+        padding: 0px 20px;
+
+        .fa {
+          width: 30px;
+          text-align: center;
+        }
+
+        &:hover {
+          .subactions {
+            display: block;
+          }
+        }
+
+        ul.subactions {
+          display: none;
+          position: absolute;
+          width: 160px;
+          left: 10px;
+          top: $header-height - 20px;
+          margin: 10px;
+          line-height: 25px;
+          
+          z-index: 11;
+
+          list-style-type: none;
+          border-radius: 2px;
+          border-collapse: separate;
+          text-align: left;
+
+          .btn {
+            display: block;
+            width: 160px;
+            padding: 10px;
+
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+
+            &:first-of-type {
+              border-top-left-radius: 2px;
+              border-top-right-radius: 2px;
+            }
+            &:last-of-type {
+              border-bottom: none;
+              border-bottom-left-radius: 2px;
+              border-bottom-right-radius: 2px;
+            }
+            &:hover {
+              .fa-gitter:before {
+                background-position: 0px -15px;
+              }
+            }
+          }
+        }    
+      }
+      
+      /* EXTENDING FONT AWESOME */
+      .fa-gitter {
+        &:before {
+          position: relative;
+          top: 2px;
+          content: "  ";
+          display: inline-block;
+          background: url(unquote('../images/gitter-icon-dark.png'));
+          background-repeat: no-repeat;
+          width: 10px;
+          height: 15px;
+        }
+      }
+      
+      li {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        padding: 0px 20px;
+      }
+    }
+  }
+
+  @include tablet {
+    .topbar span {
+      display: none;
+    }
+  }
+
+  @include phone {
+    .topbar {
+      display: none;
+    }
+  }
+}

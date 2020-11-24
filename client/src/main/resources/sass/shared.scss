@@ -1,0 +1,23 @@
+@import "commonvars";
+
+@import "codemirror";
+@import "solarized";
+@import "modal";
+@import "editor";
+@import "editor-theme";
+@import "ansi";
+
+@include modal();
+@include solarized();
+@include editor();
+
+@mixin sharedStyles($class) {
+  .scastie {
+    .app.#{$class} {
+      @include editorTheme($class);
+    }
+  }
+}
+
+@import "dark-style";
+@import "light-style";
