@@ -41,8 +41,7 @@ object RedisJedisPoolClient {
 
 
   /**
-    * 保存客户端认证信息
-    *
+    *  保存客户端认证信息
     * @param clientCreds
     * @return
     */
@@ -67,7 +66,6 @@ object RedisJedisPoolClient {
 
   /**
     * 更新客户端认证信息
-    *
     * @param clientCreds
     * @return
     */
@@ -92,7 +90,6 @@ object RedisJedisPoolClient {
 
   /**
     * 验证客户端认证信息
-    *
     * @param clientId
     * @param clientSecret
     * @return
@@ -103,7 +100,7 @@ object RedisJedisPoolClient {
     val secret = jedis.hget(key, "secret")
     val status = jedis.hget(key, "status")
     jedis.close()
-    // log.info(s"RedisCache.validClient($clientId, $clientSecret) secret: $secret , status = $status ")
+    log.info(s"RedisCache.validClient($clientId, $clientSecret) secret: $secret , status = $status ")
     if (clientSecret.equals(secret) && CLIENT_ACTIVE_STATUS.equals(status)) {
       RESULT_OK
     } else {
@@ -113,7 +110,6 @@ object RedisJedisPoolClient {
 
   /**
     * 移除客户端认证信息
-    *
     * @param clientId
     * @return
     */
