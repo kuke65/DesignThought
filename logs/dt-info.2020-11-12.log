@@ -1,9 +1,0 @@
-[2020-11-12 00:02:13,640] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-4] - Slf4jLogger started {}
-[2020-11-12 00:03:55,965] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-7] - Slf4jLogger started {}
-[2020-11-12 00:07:28,271] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-9] - Slf4jLogger started {}
-[2020-11-12 00:11:39,268] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-4] - Slf4jLogger started {}
-[2020-11-12 00:12:06,495] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-4] - Slf4jLogger started {}
-[2020-11-12 00:13:00,597] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-4] - Slf4jLogger started {}
-[2020-11-12 00:15:05,329] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-4] - Slf4jLogger started {}
-[2020-11-12 00:29:38,339] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-5] - Slf4jLogger started {}
-[2020-11-12 00:30:02,290] [INFO] [akka.event.slf4j.Slf4jLogger] [] [QuickStart-akka.actor.default-dispatcher-4] - Slf4jLogger started {}
